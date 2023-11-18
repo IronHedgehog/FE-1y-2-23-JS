@@ -1,93 +1,86 @@
-const a = 10 % 7; // % = остачу від ділення;
-console.log(a);
-const b = 10 * 7; // * = множення
-console.log(b);
-const c = 10 / 7; // / - ділення
-console.log(c);
-const d = 10 + 7;
-console.log(d);
-const e = 10 - 7;
-console.log(e);
+const name = "Artem".length;
+console.log(name);
 
-let f = 10;
-f /= 5; // *=, /=, +=, -= , %=
-console.log(f);
-f = f / 5;
-
-// Оператори порівняння
-
-const r = 11;
-const o = "11";
-
-console.log(10 > 11);
-console.log(11 < 11);
-console.log(r <= o);
-console.log(11 >= 11);
-
-console.log(r !== o); // ВИКОРИСТОВУВАТИ ЗАВЖДИ
-console.log(r != o); // Використовувати в окремих дуже рыдких випадках
-
-console.log(r == o); // Використовувати в окремих дуже рыдких випадках
-console.log(r === o); // ВИКОРИСТОВУВАТИ ЗАВЖДИ
-
-// ПРИВЕДЕННЯ ДО ЧИСЛА
-
+console.log();
+//  Конкатинація строк (сшивання строк (+))
+const greetings = "Привіт" + name;
+console.log(greetings);
 const number = 5;
-console.log(Number(number));
-console.log(typeof Number(number));
+const string = "5";
+console.log(number + string);
+console.log(number);
 
-const string = "5234.2323string";
-console.log(Number(string));
-console.log(typeof Number(string));
+// .length повертає нам довжину елементу
+const lengthMessage = "alsdjlashfhaa/f".length;
+console.log(lengthMessage);
 
-//parse int (Використовується для цілих чисел)
+const sale = "Sale";
+let povidomlennia = "Super sAlE - 70%";
 
-console.log(Number.parseInt(string));
-console.log(Number.parseInt("12.213qw12"));
-console.log(Number.parseInt("qweqweqw12"));
+// povidomlennia.toLowerCase() опустили перевіряємо повідомлення до нижнього регістру
+// .includes() який дозволяє перевірити чи є такий символ або слово в строці або реченні,змінній тощо....
+// sale.toLowerCase()  опустили до нижнього регістру філтр за яким видаляємо спам
+if (povidomlennia.toLowerCase().includes(sale.toLowerCase())) {
+  povidomlennia = "";
+}
+povidomlennia;
 
-// parse float(Використовується для дробових чисел)
-console.log(Number.parseFloat(string));
-console.log(Number.parseFloat("12.123qw12"));
-console.log(Number.parseFloat("asdjaldja"));
+const message = "AKLSDLKASFKLBGKLSDBKLJSBNKLWEBFNLKWE";
+// Case (lower , Upper)  Зменшують усі літери до нижнього регістру або до верхнього регістру
+const smallMessage = message.toLowerCase();
+console.log(smallMessage);
+const bigMessage = message.toUpperCase();
+console.log(bigMessage);
 
-// isNAN  перевірка на число
+// Строки - це індексований набір буковок(індекс завжди на одиницю менший від загальної кількості буковок тому що рахується з 0)
 
-const num = Number("jkadnflaf");
-console.log(Number.isNaN(num)); // isNAN = Чи це не число?
+// indexOf - метод який дозволяє визначити індекс символу, якщо елементу не існує завжди повертає -1
+const something = "Привіт, Артем";
+const indexL = something.indexOf("П");
+const indexD = something.indexOf("D");
+const lengthL = something.length;
+console.log(indexL);
+console.log(indexD);
+console.log(lengthL);
 
-const num1 = Number("20");
-console.log(Number.isNaN(num1));
-console.log(num1);
+const text = "Привіт, ти тиакийто-такийто-то ...";
 
-// Додавання дробових чисел
+// Метод includes дозволяє перевірити чи є данний символ в реченні(Повертає true або false)
+console.log(text.includes(" "));
 
-console.log(0.1 + 0.2 === 0.3);
-console.log(0.1 + 0.2);
+// startsWith та endsWith повертає  true або false startsWith перевіряє існування тексту на початку рядка endsWith перевіряє у кінці рядка
+console.log(text.startsWith("Податок сплачено"));
+console.log(text.endsWith("."));
 
-console.log((0.1 * 10 + 0.2 * 10) / 10);
+const userText = "      Все добре     ";
+console.log(userText.trim());
+// trim( ) обрізає пробіли спочатку речення та після кінця речення
+console.log(userText.trim().indexOf(""));
 
-// MATH
-// округлює до найближчого числа
-console.log(Math.round(1.7));
-// Повертає найбільше число з вибірки
-console.log(Math.max(100, 50, 150, 200));
-// Повертає найменше число з вибірки
-console.log(Math.min(100, 50, 150, 200));
-// Підносить число до коми до ступеня який вказується після коми
-console.log(Math.pow(2, 4));
-// MAth random повертає рандомне число (такий запис повертає випадкове число від 1 до 10)
-console.log(Math.round(Math.random() * (10 - 1) + 1));
+console.log(text.length);
 
-console.log(Math.ceil(7.1));
-console.log(Math.floor(7.9));
-// false = boolean 0 = number
-console.log(false == 0);
-// 010101010010101;
-const u = !true;
+// padStart,padEnd додає символи які ви вказуєте другим аргументом так щоб у вашому рядку було стільки символів скільки ви вкажету у першому параметрі
+console.log(text.padStart(40, "0"));
+console.log(text.padEnd(50, "0"));
 
-console.log(u);
-// Math.sqrt = розраховує квадратний корінь
-console.log(Math.sqrt(100));
-// console.log(typeof Number(Math.sqrt(100).toString()));
-console.log("object".length);
+const shoc = "Привіт,Артем! ";
+console.log(shoc.length);
+console.log(shoc.padEnd(14, "!"));
+
+const event = "У нас щось сталось ";
+
+const bigEvent = "ЩоСь Велике";
+
+const num = 2 + 10 - (100 / 2) * 10;
+// Конкатинація
+console.log(shoc + event + bigEvent);
+// Шаблонний рядок
+
+// Інтерполяція -це спосіб використання змінних у рядках та де інде де потрібно в випадку з шаблонними рядками синтаксис наступний ${назва змінної значення якої необхідно}
+console.log(`${shoc}${event}.${bigEvent} ${num}`);
+
+const hello = "Hello!";
+const lengthHello = hello.length;
+console.log(lengthHello - 1);
+// знаходження останнього індекса у будь чому
+const index = lengthHello - 1;
