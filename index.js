@@ -1,86 +1,117 @@
-const name = "Artem".length;
-console.log(name);
+const int = 11;
 
-console.log();
-//  Конкатинація строк (сшивання строк (+))
-const greetings = "Привіт" + name;
-console.log(greetings);
-const number = 5;
-const string = "5";
-console.log(number + string);
-console.log(number);
-
-// .length повертає нам довжину елементу
-const lengthMessage = "alsdjlashfhaa/f".length;
-console.log(lengthMessage);
-
-const sale = "Sale";
-let povidomlennia = "Super sAlE - 70%";
-
-// povidomlennia.toLowerCase() опустили перевіряємо повідомлення до нижнього регістру
-// .includes() який дозволяє перевірити чи є такий символ або слово в строці або реченні,змінній тощо....
-// sale.toLowerCase()  опустили до нижнього регістру філтр за яким видаляємо спам
-if (povidomlennia.toLowerCase().includes(sale.toLowerCase())) {
-  povidomlennia = "";
+// String ing = "asd".length > "asdf".length;
+if (int % 2 === 0) {
+  console.log(int % 2 === 0);
+  console.log("парне");
+} else {
+  console.log(int % 2 === 0);
+  console.log(" не парне");
 }
-povidomlennia;
 
-const message = "AKLSDLKASFKLBGKLSDBKLJSBNKLWEBFNLKWE";
-// Case (lower , Upper)  Зменшують усі літери до нижнього регістру або до верхнього регістру
-const smallMessage = message.toLowerCase();
-console.log(smallMessage);
-const bigMessage = message.toUpperCase();
-console.log(bigMessage);
+// ------------------------- Логічні опертаори ------------
 
-// Строки - це індексований набір буковок(індекс завжди на одиницю менший від загальної кількості буковок тому що рахується з 0)
+// ЛОГІЧНИЙ && (і)
+// чи можемо ми дати знижку на товари від 10000 до 20000
+const bread = 10000;
+const tovar = 15000;
+const tv = 30000;
+const pc = 120000;
+const noCan = tv >= 10000 && tv <= 20000;
+const can = tovar >= 10000 && tovar <= 20000;
+const noNoCan = pc >= 10000 && pc <= 20000;
 
-// indexOf - метод який дозволяє визначити індекс символу, якщо елементу не існує завжди повертає -1
-const something = "Привіт, Артем";
-const indexL = something.indexOf("П");
-const indexD = something.indexOf("D");
-const lengthL = something.length;
-console.log(indexL);
-console.log(indexD);
-console.log(lengthL);
+// логічний оператор && повертає false якщо хочаб один вираз не правдивий(false) якщо перша операція = false то друга або третя навіть не прочитається
+const canBread = bread >= 10000 && bread <= 20000 && bread === 10001;
+console.log(noNoCan);
+console.log(can);
+console.log(canBread);
 
-const text = "Привіт, ти тиакийто-такийто-то ...";
+// ЛОГІЧНИЙ АБО (||)
 
-// Метод includes дозволяє перевірити чи є данний символ в реченні(Повертає true або false)
-console.log(text.includes(" "));
+// Або нам вистачає грошей на гарну пеку або на трошки гірше і погуляти
 
-// startsWith та endsWith повертає  true або false startsWith перевіряє існування тексту на початку рядка endsWith перевіряє у кінці рядка
-console.log(text.startsWith("Податок сплачено"));
-console.log(text.endsWith("."));
+const peca = 50000;
+const pekaNotBad = 40000;
 
-const userText = "      Все добре     ";
-console.log(userText.trim());
-// trim( ) обрізає пробіли спочатку речення та після кінця речення
-console.log(userText.trim().indexOf(""));
+const walk = peca > 50001 || (pekaNotBad > 30000 && tovar <= 10000);
+console.log(walk);
 
-console.log(text.length);
+const num = 7;
 
-// padStart,padEnd додає символи які ви вказуєте другим аргументом так щоб у вашому рядку було стільки символів скільки ви вкажету у першому параметрі
-console.log(text.padStart(40, "0"));
-console.log(text.padEnd(50, "0"));
+// оператор АБО (||) якщо хоча б одне значення є true то результат логічного порівнняння буде true
+const result = num < 10 || num > 30 || num < 3;
+console.log(result);
+// ЛОГІЧНЕ НЕ (!)
+// Оператор НЕ(!) дозволяє отримати протилежне значення або щось заперечити
 
-const shoc = "Привіт,Артем! ";
-console.log(shoc.length);
-console.log(shoc.padEnd(14, "!"));
+console.log(!true);
 
-const event = "У нас щось сталось ";
+console.log(!0);
 
-const bigEvent = "ЩоСь Велике";
+console.log(!Boolean(56));
 
-const num = 2 + 10 - (100 / 2) * 10;
-// Конкатинація
-console.log(shoc + event + bigEvent);
-// Шаблонний рядок
+// Щоб відпочити потрібні квитки і полетіти відпочивати якщо квитків немає то відпочити не вийде
+console.log(false && bread === 10000);
 
-// Інтерполяція -це спосіб використання змінних у рядках та де інде де потрібно в випадку з шаблонними рядками синтаксис наступний ${назва змінної значення якої необхідно}
-console.log(`${shoc}${event}.${bigEvent} ${num}`);
+console.log(false || true || false);
 
-const hello = "Hello!";
-const lengthHello = hello.length;
-console.log(lengthHello - 1);
-// знаходження останнього індекса у будь чому
-const index = lengthHello - 1;
+const sub = 500;
+const standart = 100;
+const silver = 150;
+const gold = 200;
+const platinum = 250;
+const iron = 500;
+
+console.log(sub >= platinum);
+
+// якщо умова всередені if не виконується(false) то і увесь блок коду який ви написали в if  не виконується
+if (sub >= platinum) {
+  const num = 2 + 2 + 3;
+  console.log(num);
+
+  // Else = виконується якщо блок IF не виконався
+} else if (sub >= gold) {
+  console.log(
+    "Шановний саб, у вас є можливість купити голдову підписку зі знижкою"
+  );
+} else if (sub >= silver) {
+  console.log(" Ну хоча сільвер купи");
+} else {
+  console.log(
+    "В тебе має бути хоча б стандартна підписка бо нам треба грошики"
+  );
+}
+
+switch (sub) {
+  case 100:
+    console.log(standart);
+    break;
+  case 200:
+    console.log(silver);
+    break;
+  case 300:
+    console.log(gold);
+    break;
+  case 400:
+    console.log(platinum);
+    break;
+  case 500:
+    console.log(iron);
+    break;
+
+  default:
+    console.log("ЗАЖРАЛИСЬ");
+    break;
+}
+
+// ТЕРНАРНИЙ ОПЕРАТОР
+const wage = 101;
+if (wage <= 100) {
+  console.log("ok");
+} else {
+  console.log("Їди додому");
+}
+// Тернарний оператор створений для простих задач,для виконання невиличкої умови, її перевірки за допомогою знаку питання і повернення двух значень якщо правда повертається перше значення після знаку питання якщо не правда повертається значення після двокрапки.
+const isOk = wage <= 100 ? "ok" : "Їди додому";
+console.log(isOk);
