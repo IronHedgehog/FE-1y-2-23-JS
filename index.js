@@ -1,102 +1,102 @@
-// const table = {
-//   nazva: "Table",
-//   material: "derevo",
-// };
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
 
-// const head = {
-//   meta: "",
-// };
-// document.querySelector = дозволяє нам знайти та записати у змінну будь-який html тег на сторінці. Якщо тегів за пошуковим запитом багато то обереться перший який співпав
-const ulAttribute = document.querySelector("[ul]");
-const ulClass = document.querySelector(".ul");
-const ulId = document.querySelector("#ul");
-const ulTag = document.querySelector("ul");
-// .childnodes дозволяє нам отримати масив дитячих елементів але з нюансами(включаючи текст тобіш пробіли,переноси строк)
-const child = ul.childNodes;
-//.children = повертає масив дитячих тегів.
+const consoleButton = document.querySelector("#button");
 
-const children = ul.children;
+// addEventlistener = додати слухач події
 
-// .firstchild = повертає перший дитячий елемент якщо ви дотримуєтись хоча б яких потреб кодстайлінгу то скоріш за все це перенос строки.
-const first = ul.firstChild;
-// .firstElementChild = повертає перший дитячий елемент.
+//Найпопулярніші івенти click, input, submit, scroll, blur, focus, keyDown, keyUp,change.
 
-const realyFisrt = ul.firstElementChild;
+// addEventlistener перший параметр(той шо до коми) в нього записуємо назви івенту и через кому записуєм другий параметр функцію обробник яка буде відповідати на запитання а що робити якщо ця подія відбулась
+consoleButton.addEventListener("click", buttonClick);
 
-// .firstchild = повертає останній дитячий елемент якщо ви дотримуєтись хоча б яких потреб кодстайлінгу то скоріш за все це перенос строки.
-const last = ul.lastChild;
-// .lastElementChild = повертає останній дитячий елемент.
+function buttonClick(e) {
+  console.log(e);
+  // target = елемент на якому відбулась подія
+  console.log(e.target);
+  // currentTarget =  елемент на якому висить слухач події тобто addEventListener
 
-const realyLast = ul.lastElementChild;
+  // Делегування події
+  console.log(e.currentTarget);
+}
 
-// .nextElementSibling; = дозволяє взяти  сусіда попереду
+const form = document.querySelector("form");
+// submit подія відправки форми
+form.addEventListener("submit", onSubmit);
 
-const midleLi = realyFisrt.nextElementSibling;
+function onSubmit(e) {
+  e.preventDefault();
+  // form - це елемент на який ми повісили слухач події а до цього знайшли за допомогою квериселектора(строка 20)
+  //elements = всі елементи які є  у формі для більш зручного доступу до них кожному html елементу роздали атрибут name
+  // email =  значення поля name
+  // value = це отримання значення inputa  при сабміті форми
+  const email = form.elements.email.value;
+  // Замінили текстовий контент сабміт кнопки.
+  form.elements.submitButton.textContent = email;
+  console.log(email);
+}
 
-// .previousElementSibling; = дозволяє взяти попереднього сусіда
+const input = document.querySelector(".input");
+const inputButton = document.querySelector(".inputButton");
+// Подія інпут спрацьовує кожного разу коли користувач вводить якийсь новий символ в текстове поле
+input.addEventListener("input", onInput);
 
-const midleLiFromLast = realyLast.previousElementSibling;
+function onInput(e) {
+  // e.target.value = дозволяє взяти текс що записав користувач у інпут
+  const value = e.target.value;
+  // Дозволяє замінити текст кнопки при кожному спрацюванні події
+  inputButton.textContent = value;
+}
 
-console.log(midleLiFromLast);
+const changeInput = document.querySelector(".select");
+// change відпрацьовує коли на інпуті втрачається фокус(синенька обвадка).Зручно працювати з checkboxa-ми радіо кнопками та селектами(випадаючими списками).Тому що івент спрацьовує одразу по зміні значення
+changeInput.addEventListener("change", onChange);
 
-// ПОШУК ЕЛЕМЕНТІВ
+function onChange(e) {
+  console.log(e);
+}
 
-const li = document.querySelector(".li");
+const textArea = document.querySelector(".textarea");
+// focus подія яка спрацьовує при натисканні на текстове поле
+textArea.addEventListener("focus", onFocus);
 
-const previous = li.parentElement;
+function onFocus(e) {
+  console.log("FOCUS");
+}
+// blur спрацьовує при втраті фокусу на елементі
+textArea.addEventListener("blur", onBlur);
 
-const nextSibling = li.nextElementSibling;
+function onBlur(e) {
+  console.log("BLUR");
+}
 
-// document.querySelectorAll дозволяє знайти усі елементи на сторінці за заданими параметрами(Знаходить у вигляді масиву)
-const manyLi = document.querySelectorAll(".li");
-manyLi[0].attributes.src = "s;ldf,f;lsd,f";
+const changeColorButton = document.querySelector(".change-blue");
 
-manyLi[1].attributes.src =
-  "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701475200&semt=sph";
-console.log(manyLi);
+const body = document.querySelector("body");
 
-// document .querySelector дозволяє нам знайти html тег на нашій сторінці
-const img = document.querySelector(".li-img");
-// Звернення до атрибутів картинки src та alt для їх переприсвоєння значення
+changeColorButton.addEventListener("click", onClickChangeColor);
 
-img.alt = "Картинка";
-img.src =
-  "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701475200&semt=sph";
-console.log(img);
+function onClickChangeColor(event) {
+  body.style.backgroundColor = getRandomHexColor();
+  changeColorButton.textContent = body.style.backgroundColor;
+}
+// window - Усе вікно нашого браузера
+// KeyDown = подія натискання клавіші(спрацьовує раніше)
+// KeyUP = подія відпускання клавіші
 
-const input = document.querySelector("#input").value;
-console.log(input);
+window.addEventListener("keydown", onKeydown);
 
-const checkbox = document.querySelector(".checkbox");
+function onKeydown(e) {
+  console.log(e);
+  // Перевіряє натискання клавіш cmd+ESC і якшо вони затиснуті то змінює колір бекграунду
+  if (e.code === "Escape" && e.metaKey === true) {
+    onClickChangeColor();
+  }
 
-console.log(checkbox.checked);
-
-//ТЕКСТОВИЙ КОНТЕНТ
-
-const p = document.querySelector(".p");
-console.log(p.textContent);
-// .textContent дозволяє отримати текстовий контент та при бажанні його замінити
-p.textContent = "Привіт";
-console.log(p.textContent);
-
-// СТИЛІ(Інлайнові)
-
-document.body.style.backgroundColor = "DarkBlue";
-
-const button = document.querySelector(".button");
-
-button.style.backgroundColor = "yellow";
-
-// ClassList додавання класівʼ
-const pp = document.querySelector(".pp");
-// .add додати клас
-pp.classList.add("bbb");
-
-console.log(pp);
-// remove видалити клас
-// pp.classList.remove("bbb");
-console.log(pp);
-// .contains повертає true або false в залежності від того чи є клас на який ви запитали на елементі якщо є true якщо нема false
-console.log(pp.classList.contains("bbb"));
-// replace  приймає два аргумента. перший для видалення другий новий який треба підставити замість старого
-pp.classList.replace("bbb", "rrr");
+  // console.log(e.code);
+  // console.log(e.key);
+  // ControlLeft;
+  // MetaLeft;
+  // AltLeft;
+}
