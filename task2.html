@@ -4,14 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #validation-input {
+        border: 3px solid #bdbdbd;
+      }
+      #validation-input.valid {
+        border-color: #4caf50;
+      }
+      #validation-input.invalid {
+        border-color: #f44336;
+      }
+    </style>
   </head>
   <body>
     <!-- task 3 -->
-    <form>
+    <form class="form">
       <p>Choose a color:</p>
       <label
-        >Red
-        <input type="radio" name="color" value="red" checked />
+        >Tomato
+        <input type="radio" name="color" value="tomato" checked />
       </label>
       <label>
         White
@@ -39,4 +50,6 @@
     <br />
     <span id="text">Абракадабра!</span>
   </body>
+
+  <script src="./dz.js" type="module"></script>
 </html>
