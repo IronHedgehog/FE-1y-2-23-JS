@@ -37,3 +37,19 @@ console.log(str.toUpperCase());
 console.log(false || "asd");
 // && обидва елементи мають дорівнювати true щоб відпрацювало
 console.log(false && "asd");
+
+const age = 19;
+
+// якщо умова true (age >= 18) то підставиться значення "adult"
+// якщо умова false (age >= 18) то підставиться значення "child"
+const type = age >= 18 ? "adult" : "child";
+
+console.log(type);
+
+const t = "David";
+
+if (true) {
+  const t = "Mary";
+  console.log(t);
+}
+console.log(t);
