@@ -11,6 +11,8 @@
 //Ці змінні доступні  тільки у тілі функції
 //якщо параметрів більше ніж один то ми записуєм їх по черзі через кому
 // Всі параметри присвоюються по черзі
+
+// Функції які створюються через ключево слово function називаються function declaration
 function doCoffee(milk, sirop) {
   //   console.log("milk , " + milk);
   //   console.log("Sirop , " + sirop);
@@ -48,9 +50,13 @@ const element = document.getElementById("start");
 // element.addEventListener("click", doCoffee());
 // Параметри за замовчуванням = це перестраховка у тому випадку якщо аргументи не передадуть
 function sum(a = 0, b = 0, c = 0) {
-  //  arguments = це псевдомасив аргументів які приймає функція
-  //в чому різниця між звичайним і псевдомасивом - у тому що у псевдомасиву майже немає методів масиву з якими ми зазвичай працюємо тому за допомогою Array.from() ми можемо перетворити псевдомасив у звичайний масив і використовувати усі методи масиву що ми вивчили
+  //  arguments = це локальна змінна яка автоматично створюється у кожній function declaration і містить у собі псевдо масив переданих аргументів псевдомасив аргументів які приймає функція
+  //в чому різниця між звичайним масивом і псевдомасивом - у тому що у псевдомасиву майже немає методів масиву з якими ми зазвичай працюємо тому за допомогою Array.from() ми можемо перетворити псевдомасив у звичайний масив і використовувати усі методи масиву що ми вивчили
   // console.log(Array.from(arguments));
+  console.log(arguments);
+
+  const arr = Array.from(arguments);
+  console.log(arr);
   let total = 0;
   for (const argument of arguments) {
     total += argument;
@@ -68,3 +74,37 @@ function plusString(...args) {
 }
 
 plusString("a", "c", "d");
+
+function rgb(red = 255, green = 0, blue = 0) {
+  console.log(red, green, blue);
+}
+
+rgb("red", "green", "blue");
+
+// Якщо на вулиці сонячно і  мама дозволить я піду гуляти
+function go(sun, mother, travma = false, gift = true) {
+  if (sun !== true && mother !== true) {
+    console.log("не склалось");
+    // return виходить з функції
+    return;
+  }
+  if (travma) {
+    // Синтаксис раннього повернення
+    // в данному випадку ретурн виходить з функції
+    return;
+  }
+
+  if (gift) {
+    // Оператор return завершує виконання функції
+    // Повертає значення яке ви поставите після оператору return у зовнішній код.
+    // Ранне повернення з подарунком
+    console.log("Раннє повернення з подарунком");
+    return gift;
+  }
+
+  if (goal) {
+    return;
+  }
+  console.log("після травми");
+}
+go(true, true);
