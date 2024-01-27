@@ -1,72 +1,85 @@
-console.log("as");
-// callback - це функція яка ніколи сама по собі не відпрацьовує, вона створена для відпрацювання в інших функціях
-const greatingsUser = function (name) {
-  console.log(`Привіт,${name}`);
-};
-// callback
-const logInTroubles = function (trouble) {
-  console.log(trouble);
-};
-
-function ga(a, b, c, d, f) {
-  console.log(a, b, c, d, f);
-}
-
-function filters(message) {
-  console.log(message);
-}
-// функція вищого порядку - функція яка приймає параметрами інші функції
-// pure Function - чиста функція - одна функція - одна дія(логіка)
-let counter = 0;
-function logIn(success, error, ga, filters) {
-  if (Math.random() * 100 > 80) {
-    console.log("Рандом більше 80");
-    success("Artem");
-    ga();
-  } else {
-    counter += 1;
-    if (counter === 3) {
-      filters("Ваш акаунт заблоковано підтвердіть шо це ви на пошті");
-      counter = 0;
-    }
-    console.log("Рандом менше 80");
-    error("Сталась помилка, спробуй ще");
-  }
-}
-
-// logIn(greatingsUser, logInTroubles, ga, filters);
-
-// Arrow functions
-// function declaration - утворення функцій через ключеве слово function
-// function getSum(a, b) {
-//   return a + b;
-// }
-
-// console.log(getSum(2, 2));
-
-// стрілкова функція - стрілка
-
-// Склад
-
-// Ключове слово - const
-// назва функції (getSum)
-// = присвоєння результату функції у змінну getSum
-//  () = приймаємо параметри
-// () =>{} = синтаксис утворення стрілкової функції
-
-// => - в стрілку вмонтовано return
-// синтаксис раннього повернення
-const getSum = (a, b) => {
-  const c = 5;
-  return c + a + b;
+// Як створити обʼєкт?
+// iніціалізований = створений
+// обʼєкти наповнються парами ключ: значення
+// Наприклад material:dub, width: 2m,height: 1m
+// Кожна пара ключ значення розділяється комою
+const table = {
+  // ключ (завжди строка) - material , значення - "dub"
+  material: "dub",
+  width: "2m",
+  height: "1m",
+  color: "black",
+  // this - наш обʼєкт (обʼєкт в якому ви використовуєте this)
+  total() {
+    console.log(this.color, this.height, this.material, this.width);
+  },
+  totalTable() {
+    console.log(table.color, table.height, table.material, table.width);
+  },
 };
 
-console.log(getSum(2, 2));
+table.total();
+table.totalTable();
+// table.color - зверенення до властивості стола такої як колор
+// console.log(table.color);
+// В рядку нище у нас відбувається заміна властивості
+table.color = "red";
+// console.log(table.color);
+// Менш зручний спосіб отримати властивість обʼєкту
+// console.log(table["material"]);
 
-// якщо у вас один параметр то дужки кругі не є обовʼязковими
-const logInn = (...args) => {
-  console.log(args);
+table["material"] = "paper";
+// console.log(table["material"]);
+
+// console.log(table);
+// якщо властивості до якої ви звертаєтесь не існує то вона буде створена
+table.type = "Gamer";
+
+// console.log(table.type);
+
+// Видалення властивості з обʼєкту
+delete table.type;
+
+// console.log(table.type);
+
+let title = "doTable";
+let stars = 5;
+//Такий синтаксис був обовʼязковим в ES5
+const es5book = {
+  title: title,
+  stars: stars,
 };
-logInn("A", "r", "t", "e", "m");
-// якщо функція не приймає жодного параметру то обовʼязково мають бути круглі дужки
-const logOut = () => {};
+
+// ES6
+
+const es6book = {
+  title,
+  stars,
+};
+
+console.log(es5book);
+console.log(es6book);
+
+const es5table = {
+  top: function toTheTop() {
+    console.log("Ваш стіл улітає в космос");
+  },
+  bottom: function toTheBottom() {
+    console.log("Ваш стіл пробиває дно");
+  },
+};
+
+es5table.top();
+es5table.bottom();
+
+const es6table = {
+  top() {
+    console.log("Ваш стіл улітає в космос");
+  },
+  bottom() {
+    console.log("Ваш стіл пробиває дно");
+  },
+};
+
+es6table.top();
+es6table.bottom();
