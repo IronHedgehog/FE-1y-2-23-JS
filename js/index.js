@@ -1,85 +1,68 @@
-// Як створити обʼєкт?
-// iніціалізований = створений
-// обʼєкти наповнються парами ключ: значення
-// Наприклад material:dub, width: 2m,height: 1m
-// Кожна пара ключ значення розділяється комою
-const table = {
-  // ключ (завжди строка) - material , значення - "dub"
-  material: "dub",
-  width: "2m",
-  height: "1m",
-  color: "black",
-  // this - наш обʼєкт (обʼєкт в якому ви використовуєте this)
-  total() {
-    console.log(this.color, this.height, this.material, this.width);
-  },
-  totalTable() {
-    console.log(table.color, table.height, table.material, table.width);
-  },
+const a = {
+  value: 10,
+  val: 5,
+  v: 3,
+  w: 10,
 };
+// обʼєкти не ітеруються тобто іх неможливо перебрати за допомогою відомих нам циклів
+// for (const value of a) {
+//   console.log(value);
+// }
 
-table.total();
-table.totalTable();
-// table.color - зверенення до властивості стола такої як колор
-// console.log(table.color);
-// В рядку нище у нас відбувається заміна властивості
-table.color = "red";
-// console.log(table.color);
-// Менш зручний спосіб отримати властивість обʼєкту
-// console.log(table["material"]);
+// for in дозволяэ перебрати обʼєкти та змінювати значення на необхідні якщо це треба
+for (const key in a) {
+  // hasOwnProperty перевіряє чи це властивості саме цього обʼєкту
+  // console.log(a.key);
+  const element = a[key];
+  if (element === 3) {
+    a[key] = 5;
+    console.log(element);
+  }
+  console.log(element);
+}
+// Два способи отримати значення влистивості обʼєкту
+console.log(a.value);
+// console.log(a["value"]);
+// Дозволяє тримати масив усіх ключів обʼєкта які ви передасте у круглі дужки
+const aKeys = Object.keys(a);
+console.log(aKeys);
+// Отримує масив значень обʼєкту
+const aValues = Object.values(a);
+console.log(aValues);
+// Дозволяє отримати пари ключ значення всередені масиву
+const aEntries = Object.entries(a);
+console.log(aEntries);
 
-table["material"] = "paper";
-// console.log(table["material"]);
+// for (const key of aKeys) {
+//   console.log(`${key} : ${a[key]} `);
+// }
+const values = [1, 23, 3, 4, 2, 6, 6, 7, 7, 8, 9, 9, 9, 0];
+console.log(...values);
+const min = Math.min(values); // NaN
+// ... - Spread оператор який розпилює масив данних по одному(виймає з масиву)
+const minSpread = Math.min(...values); // 0 - ...values
 
-// console.log(table);
-// якщо властивості до якої ви звертаєтесь не існує то вона буде створена
-table.type = "Gamer";
+console.log(min);
+console.log(minSpread);
 
-// console.log(table.type);
+const valuesCopy = [...values, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9];
+// Складні типи даних зберігаються за посиланням
+console.log(values);
+console.log(valuesCopy);
+console.log(values === valuesCopy); //- false
+// Копіювання данних ES5
+const valueCopySlice = valuesCopy.slice();
+// Всі складні типи данних зберігаються за посиланням
+console.log(valueCopySlice === valuesCopy);
+// .assign - слугує для копіювання (Динозавр у світі копіювання)
 
-// Видалення властивості з обʼєкту
-delete table.type;
-
-// console.log(table.type);
-
-let title = "doTable";
-let stars = 5;
-//Такий синтаксис був обовʼязковим в ES5
-const es5book = {
-  title: title,
-  stars: stars,
+const b = {
+  b: 10,
 };
+const copyA = Object.assign(a);
+console.log(a);
+copyA.y = 10;
+console.log(copyA);
 
-// ES6
-
-const es6book = {
-  title,
-  stars,
-};
-
-console.log(es5book);
-console.log(es6book);
-
-const es5table = {
-  top: function toTheTop() {
-    console.log("Ваш стіл улітає в космос");
-  },
-  bottom: function toTheBottom() {
-    console.log("Ваш стіл пробиває дно");
-  },
-};
-
-es5table.top();
-es5table.bottom();
-
-const es6table = {
-  top() {
-    console.log("Ваш стіл улітає в космос");
-  },
-  bottom() {
-    console.log("Ваш стіл пробиває дно");
-  },
-};
-
-es6table.top();
-es6table.bottom();
+const abCopy = Object.assign({}, a, b);
+console.log(abCopy);
