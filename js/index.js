@@ -1,68 +1,63 @@
-const a = {
-  value: 10,
-  val: 5,
-  v: 3,
-  w: 10,
+const market = {
+  tovari: [{ apple: "red" }, { chair: "black" }],
+  car: "car",
+  products: "products",
 };
-// обʼєкти не ітеруються тобто іх неможливо перебрати за допомогою відомих нам циклів
-// for (const value of a) {
-//   console.log(value);
+
+console.log(market.tovari);
+// Значення за замовчуванням підтягуються тільки в тому випадку якщо значення = undefined
+// Через двокрапку ви можете дати нову назву вашій змінній , якщо ви того бажаєте
+// const {
+//   tovari: superTovari,
+//   car = null,
+//   products = null,
+//   water = true,
+// } = market;
+
+const { car, ...elements } = market;
+console.log(car);
+console.log(elements);
+
+// console.log(superTovari, car, products, water);
+console.log(market);
+// for (const tovar of market.tovari) {
+//   console.log(tovar);
+//   const { apple, chair } = tovar;
+//   console.log(apple, chair);
 // }
 
-// for in дозволяэ перебрати обʼєкти та змінювати значення на необхідні якщо це треба
-for (const key in a) {
-  // hasOwnProperty перевіряє чи це властивості саме цього обʼєкту
-  // console.log(a.key);
-  const element = a[key];
-  if (element === 3) {
-    a[key] = 5;
-    console.log(element);
-  }
-  console.log(element);
-}
-// Два способи отримати значення влистивості обʼєкту
-console.log(a.value);
-// console.log(a["value"]);
-// Дозволяє тримати масив усіх ключів обʼєкта які ви передасте у круглі дужки
-const aKeys = Object.keys(a);
-console.log(aKeys);
-// Отримує масив значень обʼєкту
-const aValues = Object.values(a);
-console.log(aValues);
-// Дозволяє отримати пари ключ значення всередені масиву
-const aEntries = Object.entries(a);
-console.log(aEntries);
+// 1)Записуємо ключове слово для створення змінної
+// 2) Зрозуміти,що саме ви хочети деструктуризувати (якщо ви хочете дістати обʼєкти з масиву вам треба деструктуризувати масив). []
+// Якщо ви хочете дістати значення обʼєкту вам треба деструктуризувати обʼєкт {}
 
-// for (const key of aKeys) {
-//   console.log(`${key} : ${a[key]} `);
-// }
-const values = [1, 23, 3, 4, 2, 6, 6, 7, 7, 8, 9, 9, 9, 0];
-console.log(...values);
-const min = Math.min(values); // NaN
-// ... - Spread оператор який розпилює масив данних по одному(виймає з масиву)
-const minSpread = Math.min(...values); // 0 - ...values
+// 3) Вказати шлях з якого треба деструктруузавти ці властивості
+const [appleObj, chairObj] = market.tovari; // деструктуризація масиву
+console.log(appleObj, chairObj);
+const { apple } = appleObj; // деструктуризація обʼєкту
+const { chair } = chairObj; // деструктуризація обʼєкту
+console.log(apple, chair);
 
-console.log(min);
-console.log(minSpread);
-
-const valuesCopy = [...values, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9];
-// Складні типи даних зберігаються за посиланням
-console.log(values);
-console.log(valuesCopy);
-console.log(values === valuesCopy); //- false
-// Копіювання данних ES5
-const valueCopySlice = valuesCopy.slice();
-// Всі складні типи данних зберігаються за посиланням
-console.log(valueCopySlice === valuesCopy);
-// .assign - слугує для копіювання (Динозавр у світі копіювання)
-
-const b = {
-  b: 10,
+const options = {
+  size: {
+    width: 100,
+    height: 200,
+  },
+  items: ["cake", "donut"],
+  extra: true,
 };
-const copyA = Object.assign(a);
-console.log(a);
-copyA.y = 10;
-console.log(copyA);
 
-const abCopy = Object.assign({}, a, b);
-console.log(abCopy);
+const {
+  // глибока деструктуризація (деструктуризація обʼєкта в обʼєкті)
+  size: { width, height },
+  // глибока деструктуризація (деструктуризація масива в обʼєкті)
+  items: [cake, donut],
+  extra,
+} = options;
+console.log(width, height, cake, donut, extra);
+
+const rgb = [250, 150, 200];
+
+// const [red, green, blue, alfa = 0.3] = rgb;
+const [, , blue] = rgb;
+
+console.log(blue);
