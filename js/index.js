@@ -61,3 +61,23 @@ const rgb = [250, 150, 200];
 const [, , blue] = rgb;
 
 console.log(blue);
+
+const countTotalSalary = function (employee) {
+  // твій код
+};
+
+const users = {
+  mango: 100,
+  poly: 150,
+  alfred: 80,
+};
+
+const users2 = {
+  kiwi: 200,
+  lux: 50,
+  chelsy: 150,
+};
+
+countTotalSalary(users); // 330
+
+countTotalSalary(users2); // 400
