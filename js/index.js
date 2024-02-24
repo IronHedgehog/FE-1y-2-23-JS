@@ -80,8 +80,8 @@ const nums1 = [1, 2, 3, 4, 5];
 
 const multiplyNumber = nums1.map((num) => num * 2);
 
-console.log(multiplyNumber);
-console.log(nums1);
+// console.log(multiplyNumber);
+// console.log(nums1);
 
 const transactions = [
   {
@@ -105,27 +105,27 @@ const totalAmount = transactions.map((transaction) => {
   return transaction.type;
 });
 
-console.log(totalAmount);
+// console.log(totalAmount);
 
 const nums2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // якщо умова яку ви задали дорівнює true то елемент додається в новий масив
 const filteredArr = nums2.filter((num) => num > 5);
-console.log(filteredArr);
+// console.log(filteredArr);
 
 const transactionType = transactions.filter(
   (transaction) => transaction.type === "withdraw"
 );
 
-console.log(transactionType);
+// console.log(transactionType);
 
 // .find - створений для пошуку, знайти у масиві
 
-console.log(nums2.find((num) => num < 10));
+// console.log(nums2.find((num) => num < 10));
 
 const getTransactionById = (arr, id) =>
   arr.find((transaction) => transaction.id === id);
 
-console.log(getTransactionById(transactions, 3));
+// console.log(getTransactionById(transactions, 3));
 
 // every() some() -повертають true або false
 
@@ -135,8 +135,8 @@ console.log(getTransactionById(transactions, 3));
 
 const nums3 = [1, 2, 23, 34, 45, 6];
 
-console.log(nums3.every((number) => number >= 23));
-console.log(nums3.some((number) => number >= 23));
+// console.log(nums3.every((number) => number >= 23));
+// console.log(nums3.some((number) => number >= 23));
 
 const users = [
   {
@@ -225,5 +225,106 @@ const users = [
   },
 ];
 
-// sort - мотує початковий масив
-// reduce
+// -----------------------Reduce------------------
+
+const reduceNums = [1, 2, 3, 4, 5];
+
+const multiply = (array) => {
+  // array.reduce([минуле значення, значення поточне, index,array],початкове значееня акума)
+  return array.reduce((acc, number) => {
+    // console.log("acc: " + acc, "number: " + number);
+    return acc * number;
+  }, 1);
+};
+
+const getTotalAmountTransactions = (transactions) => {
+  return transactions.reduce((acc, transaction) => {
+    // console.log(acc, transaction);
+    return acc + transaction.amount;
+  }, 0);
+};
+
+const getTypesTransactions = (transactions) => {
+  return transactions.reduce((acc, transaction) => {
+    // console.log(acc, transaction);
+    acc.push(transaction.type);
+    return acc;
+  }, []);
+};
+
+// console.log(multiply(reduceNums));
+// console.log(getTotalAmountTransactions(transactions));
+// console.log(getTypesTransactions(transactions));
+
+const fruits = ["apple", "banana", "orange", "banana", "orange", "orange"];
+
+const fruitCounts = fruits.reduce((accumulator, fruit) => {
+  accumulator[fruit] = (accumulator[fruit] || 0) + 1;
+  return accumulator;
+}, {});
+
+// console.log(fruitCounts);
+// Виводить { apple: 1, banana: 1, orange: 1 }
+// підсумки по reduce(файний калькулятор) - має початкове значення(акум).
+// за допомогою reduce ви можете створити абсолютно будь що.
+
+// ------------------------SORT -------------------
+
+// sort - мотує початковий масив(тому його використовують лише в ланцюжку методів)
+// Повертає масив відсортованих елементів
+// Перебираючий методд масиву який отримує доступ до кожного елементу масиву
+
+const numsForSort = [2, 1, 5, 4, 3];
+
+// За замовчуванням метод sort встановлений сортувати за зростанням(від меньшого до більшого)
+console.log("Before sort: " + numsForSort);
+console.log(numsForSort.sort());
+console.log("After sort: " + numsForSort);
+
+const names = ["Artem", "Illa", "Stas", "Arthur"];
+
+console.log("Before sort: " + names);
+console.log("After sort: " + names.sort());
+
+// на зростання якщо a.age - b.age
+// на спадання якщо b.age - a.age
+// якщо рівні або 0 їх порядок значення не має будуть повернені підряд(жодної різниці)
+const sortByAge = (a, b) => b.age - a.age;
+
+console.log(users.sort(sortByAge));
+
+// ---------------------localeCompare()------------------
+
+fruits.sort((a, b) => {
+  return a.localeCompare(b);
+});
+
+console.log(fruits);
+
+//----------------------- Ланцюжки методів -----------------
+
+const numberss = [1, 2, 3, 4, 5, 6, 7, 89, 9];
+// отримати кратні 2 елементи
+const even = numberss.filter((nums) => nums % 2 === 0);
+console.log(even);
+// кожен з отриманих елементів помножити на 2
+const doubled = even.map((num) => num * 2);
+
+// розгорнути масив
+const reversed = doubled.reverse();
+console.log(reversed);
+
+const result = numberss
+  .filter((nums) => nums % 2 === 0)
+  .map((num) => num * 2)
+  .reverse();
+console.log(numberss);
+console.log(result);
+
+// rest spread
+
+const arrrr = [1, 2, 3, 4, 5];
+const newArr = [...arrrr];
+console.log(arrrr);
+console.log(newArr);
+console.log(arrrr === newArr);
