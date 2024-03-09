@@ -7,6 +7,8 @@
 //   meta: "",
 // };
 // document.querySelector = дозволяє нам знайти та записати у змінну будь-який html тег на сторінці. Якщо тегів за пошуковим запитом багато то обереться перший який співпав
+// querySelector - пошук за допомогою атрибутів,класів,idшніків,за тегом
+// атрибут
 const ulAttribute = document.querySelector("[ul]");
 const ulClass = document.querySelector(".ul");
 const ulId = document.querySelector("#ul");
