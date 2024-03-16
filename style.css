@@ -5,3 +5,14 @@
 .rrr {
   background-color: aquamarine;
 }
+
+#gallery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.img {
+  width: 250px;
+}
