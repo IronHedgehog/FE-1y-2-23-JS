@@ -1,55 +1,71 @@
-// Метод для створення DOM вузла
-const heading = document.createElement("h1");
+// 'keyUp, keyDown'
 
-console.log(heading);
-heading.textContent = "Цей елемент має зʼявитись на сторінці";
-console.log(heading);
-// Методи для додавання на сторінку(можуть через кому додавати безліч дом вузлів тобіш тегів)
+document.addEventListener("keydown", (event) => {
+  // preventDefault - забороняє дії за заовчуванням
+  event.preventDefault();
 
-// append - додає елемент після усіх дітей
-document.body.append(heading);
-// prepend - додає елемент перед усіма дітьми
-document.body.prepend(heading);
-// after - працює так само як append
-document.body.after(heading);
-// before - працює так само як prepend
-document.body.before(heading);
+  console.log(event);
+  if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
+    document.body.style.backgroundColor = "#000000";
+  }
 
-const list = document.querySelector(".list");
+  if (event.shiftKey && event.code === "KeyQ") {
+    console.log("keyQ");
+  }
+});
 
-// Створити тег для додавання
+// обʼєкт події - це обʼєкт що нам передає addEventListener для того щоб ми могли відстежити та отримати данні при яких обставинах з елементом відбувся івент який ми чекали
+document.addEventListener("keyup", (event) => {
+  // code - код повертає назву фізичної клавіші на клавіатурі(не залежить від мови)
+  // key - ключ повертає символ який був згенерований за допомогою натискання на клавішу
+  // console.log("КОд", event.code);
+  // console.log("ключ", event.key);
+  // console.log(event);
+});
 
-const li = document.createElement("li");
-const li2 = document.createElement("li");
-li.textContent = "остання лішка";
-li2.textContent = "JS перша лішка";
-// appendChild додає останнім дитячим елементом
-list.appendChild(li);
-// insertBefore - встановлює елемент який ви передаєте першим параметром перед елементом,що ви передаєте другим параметром
-list.insertBefore(li2, li);
+// ---------------ПОдії мишки-------------------
 
-li2.remove();
+document.addEventListener("mousedown", (evt) => {
+  // console.log("MouseDown");
+});
 
-// innerHTML - видалення елементів
-// innerHTML - будь-який тег який ви запишите у середину innerHTML буде створено на сторінці.
+// click це повний цикл натискання кнопки мишки
+document.addEventListener("click", (evt) => {
+  // console.log("click");
+});
 
-// Видаляє(чистить) елемет на якому його викликали (ЧИТАННЯ)
-// Додає те, що ми попросили (Заміни)
-// document.body.innerHTML = "<h1>Привіт, я тут чітерю трошки</h1>";
-//
+document.addEventListener("mouseup", (evt) => {
+  // console.log("Mouseup");
+});
 
-// innerHTML - "" файний спосіб видалити елементи
-// document.body.innerHTML = "";
-// insertAdjacentHTML - додавання елементів
-const test = document.querySelector(".test");
+const div = document.querySelector(".div");
+// mouseover - наведення
+div.addEventListener("mouseover", () => {
+  // div.style.backgroundColor = "#000000";
+});
 
-const template =
-  "<h1>Привіт, я тут чітерю трошки</h1> <ul><li>1</li><li>2</li></ul>";
+//mouseout - ми перестали наводитись на елмент
+div.addEventListener("mouseout", () => {
+  // div.style.backgroundColor = "tomato";
+});
 
-test.insertAdjacentHTML("beforeend", template);
+div.addEventListener("dblclick", () => {
+  console.log("dblclick");
+});
 
-const buttom = document.querySelector("button");
+div.addEventListener("contextmenu", (e) => {
+  // e.preventDefault() - забороняє появу контекстного меню
+  // e.preventDefault();
+  console.log("Людина відкрила менюшку іструментів");
+});
 
-// dataset - властивості шукати без слова дата
-console.log(buttom.dataset.save);
-console.log(buttom.dataset.delete);
+document.body.addEventListener("mousemove", (e) => {
+  // e.clientX, e.clientY - відраховуються від верхнього лівого кута
+  // console.log("X", e.clientX);
+  // console.log("Y", e.clientY);
+});
+div.addEventListener("mousemove", (e) => {
+  // e.pageX -
+  console.log("X", e.pageX);
+  console.log("Y", e.pageY);
+});
